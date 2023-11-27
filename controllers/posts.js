@@ -1,6 +1,6 @@
 const {PrismaClient} = require("@prisma/client");
 const prisma = new PrismaClient();
-const {validationResult} = require("express-validator");
+const {validationResult, matchedData} = require("express-validator");
 
 async function index(req, res){
     const filtri = {}

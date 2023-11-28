@@ -26,4 +26,17 @@ module.exports = {
             errorMessage: "il content deve essere una stringa"
         }
     },
+    category:{
+        in: ["body"],
+        isString: {
+            errorMessage: "il content deve essere una stringa"
+        }
+    },
+    tags:{
+        in: ["body"],
+        isString: {
+            errorMessage: "il content deve essere una stringa"
+        }
+    },
+
 }

@@ -13,6 +13,7 @@ async function register(req, res) {
     }
 
     const datiIngresso = matchedData(req);
+    console.log(datiIngresso)
 
     // andiamo a criptare la password
     
@@ -30,13 +31,13 @@ async function register(req, res) {
         }
     })
 
-    const token = jwt.sign(user, process.env.JWT_SECRET, {expiresIn: "1d"})
+    // const token = jwt.sign(user, process.env.JWT_SECRET, {expiresIn: "1d"})
 
     return res.json({user, token});
 }
 
 async function login(req, res) {
-    
+
     async function comparePasswords(password, hashedPassword) {
         const match = await bcrypt.compare(password, hashedPassword);
         return match;
@@ -57,6 +58,8 @@ async function login(req, res) {
     }
 
     const token = jwt.sign(user, process.env.JWT_SECRET, { expiresIn: '1d' });
+
+    delete user.password;
 
     res.json({ token, user });
 }
